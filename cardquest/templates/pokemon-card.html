@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block navbar %}
   <section class="navbar">
     <a href='{% url "home" %}' class="btn"> Home </a>
     <a href='{% url "trainer_list" %}' class="btn"> Trainer </a>
     <a href='{% url "pokemon-card" %}' class="btn" id="active"> Pokemon Card </a>
     <a href='{% url "collection" %}' class="btn"> Collection </a>
   </section>
+{% endblock navbar %}
+
+
+{% block content %}
 {% endblock %}
