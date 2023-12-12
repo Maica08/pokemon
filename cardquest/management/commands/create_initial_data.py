@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from ...models import PokemonCard, Trainer
+from ...models import PokemonCard, Trainer, Collection
 
 class Command(BaseCommand):
     help = 'Creates initial data for application'
@@ -7,6 +7,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.create_pokemon_cards()
         self.create_trainers()
+        self.create_collections()
     
     def create_pokemon_cards(self):
         card1 = PokemonCard(name="Pikachu", rarity="Rare",hp=60, card_type="Electric", attack="Thunder Shock",
@@ -79,6 +80,7 @@ class Command(BaseCommand):
         
         self.stdout.write(self.style.SUCCESS('Successfully created Pokemon cards.'))
 
+
     def create_trainers(self):
         trainer1 = Trainer(name="Ash", birthdate= "1987-05-22",location= "Pallet Town",email= "ash@pokemon.com") 
         trainer2 = Trainer(name= "Gary",birthdate= "1984-08-06",location= "Pallet Town",email= "gary@pokemon.com")
@@ -97,3 +99,15 @@ class Command(BaseCommand):
             trainer.save()
         
         self.stdout.write(self.style.SUCCESS('Successfully created trainers.'))
+
+    
+    def create_collections(self):
+    
+        collection1 = Collection(card=PokemonCard.objects.get(name="Pikachu"), trainer=Trainer.objects.get(name="Ash"), collection_date="2022-12-12")
+        
+        collections = [collection1]
+
+        for collection in collections:
+            collection.save()
+        
+        self.stdout.write(self.style.SUCCESS('Successfully created collections.'))
