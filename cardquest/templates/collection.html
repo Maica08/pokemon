@@ -10,4 +10,23 @@
 {% endblock navbar%}
 
 {% block content %}
+  <section class="trainers-container">
+    <table class="styled-table">
+      <tbody>
+        <tr>
+          <th>Trainer</th>
+          <th>Pokemon Card</th>
+          <th>Collection Date</th>
+        </tr>
+
+        {% for object in object_list %}
+          <tr>
+            <td>{{object.trainer}}</td>
+            <td>{{object.card}}</td>
+            <td>{{object.collection_date}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
 {% endblock %}

@@ -102,12 +102,22 @@ class Command(BaseCommand):
 
     
     def create_collections(self):
-    
-        collection1 = Collection(card=PokemonCard.objects.get(name="Pikachu"), trainer=Trainer.objects.get(name="Ash"), collection_date="2022-12-12")
+        trainer1 = Trainer.objects.get(name="Ash")
+        trainer2 = Trainer.objects.get(name="Fernando")
+        trainer3 = Trainer.objects.get(name="Crishel")
         
-        collections = [collection1]
-
-        for collection in collections:
+        pokemon_cards = PokemonCard.objects.all()
+        
+        for card in pokemon_cards[:3]:
+            collection = Collection(card=card, trainer=trainer1, collection_date="2022-12-12")
+            collection.save()
+            
+        for card in pokemon_cards[3:12]:
+            collection = Collection(card=card, trainer=trainer2, collection_date="2022-12-12")
+            collection.save()
+            
+        for card in pokemon_cards[12:]:
+            collection = Collection(card=card, trainer=trainer3, collection_date="2022-12-12")
             collection.save()
         
         self.stdout.write(self.style.SUCCESS('Successfully created collections.'))
