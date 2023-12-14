@@ -21,7 +21,7 @@ class TrainerList(ListView):
     model = Trainer
     context_object_name = 'trainer'
     template_name = 'trainers.html'
-    paginate_by = 15
+    paginate_by = 9
     
     
 class PokemonCardList(ListView):
@@ -35,24 +35,24 @@ class CollectionList(ListView):
     model = Collection
     context_object_name = 'collection'
     template_name = 'collection.html'
-    paginate_by = 15    
+    paginate_by = 10
     
 
 class TrainerCreateView(CreateView):
     model = Trainer
     form_class = TrainerForm
     template_name = 'trainer_add.html'
-    success_url = reverse_lazy('trainer_list')
+    success_url = reverse_lazy('trainer-list')
     
 
 class TrainerUpdateView(UpdateView):
     model = Trainer
     form_class = TrainerForm
     template_name = 'trainer_edit.html'
-    success_url = reverse_lazy('trainer_list')
+    success_url = reverse_lazy('trainer-list')
     
 
 class TrainerDeleteView(DeleteView):
     model = Trainer
     template_name = 'trainer_del.html'
-    success_url = reverse_lazy('trainer_list')
+    success_url = reverse_lazy('trainer-list')

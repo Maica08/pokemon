@@ -3,14 +3,14 @@
 {% block navbar %}
   <section class="navbar">
     <a href='{% url "home" %}' class="btn"> Home </a>
-    <a href='{% url "trainer_list" %}' class="btn" id="active"> Trainer </a>
+    <a href='{% url "trainer-list" %}' class="btn" id="active"> Trainer </a>
     <a href='{% url "pokemon-card" %}' class="btn"> Pokemon Card </a>
     <a href='{% url "collection" %}' class="btn"> Collection </a>
   </section>
 {% endblock navbar %}
 
 {% block content %}
-  <a href="{% url 'trainer_add' %}" class="btn btn-outline-primary">Add New
+  <a href="{% url 'trainer-add' %}" class="btn btn-outline-primary">Add New
     Trainer</a><br>
 
   <section class="trainers-container">
@@ -32,13 +32,15 @@
             <td>{{ object.location }}</td>
             <td>{{ object.email }}</td>
             <td>
-              <a href="trainer_list/{{t.id}}">Edit</a> | 
-              <a href="trainer_list/{{t.id}}/delete">Delete</a>
+              <a href="trainer_list/{{object.id}}">Edit</a> | 
+              <a href="trainer_list/{{object.id}}/delete">Delete</a>
             </td>
           </tr>
-          {% empty %}
         {% endfor %}
       </tbody>
     </table>
   </section>
+  <div>
+    {% include 'includes/pagination.html' %}
+  </div>
 {% endblock %}
