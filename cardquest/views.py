@@ -55,14 +55,14 @@ class CollectionCreateView(CreateView):
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_add.html'
-    sucess_url = reverse_lazy('collection')
+    success_url = reverse_lazy('collection')
     
 
 class CollectionUpdateView(UpdateView):
     model = Collection
     form_class = CollectionForm
     template_name = 'collection_edit.html'
-    sucess_url = reverse_lazy('collection')
+    success_url = reverse_lazy('collection')
     
 
 class CollectionDeleteView(DeleteView):
