@@ -10,6 +10,9 @@
 {% endblock navbar%}
 
 {% block content %}
+  <a href="{% url 'collection-add' %}" class="btn btn-outline-primary">Add New Trainer</a><br>
+
+
   <section class="trainers-container">
     <table class="styled-table">
       <tbody>
@@ -17,6 +20,7 @@
           <th>Trainer</th>
           <th>Pokemon Card</th>
           <th>Collection Date</th>
+          <th>Action</th>
         </tr>
 
         {% for object in object_list %}
@@ -24,6 +28,10 @@
             <td>{{object.card}}</td>
             <td>{{object.trainer}}</td>
             <td>{{object.collection_date}}</td>
+            <td>
+              <a href="collection_list/{{object.id}}">Edit</a> | 
+              <a href="collection_list/{{object.id}}/delete">Delete</a>
+            </td>
           </tr>
         {% endfor %}
       </tbody>
